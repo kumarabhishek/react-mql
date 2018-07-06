@@ -1,0 +1,53 @@
+{
+  "name": "@kaweb/react-mql",
+  "version": "1.0.0",
+  "description": "CSS Media Queries HOC for React",
+  "main": "lib/react-mql.js",
+  "scripts": {
+    "start": "NODE_ENV=production webpack --config=webpack.config.js && npm run serve",
+    "serve": "node example/server.js",
+    "prebuild:es6": "rm -rf lib/es && mkdir -p lib/es",
+    "build:es6": "babel src/index.js -d lib/es --source-maps --minified --env-name production --no-comments",
+    "prebuild:es5": "rm -rf lib",
+    "build:es5": "NODE_ENV=production webpack -p --config=webpack.config.js",
+    "build": "npm run build:es5 && npm run build:es6",
+    "prepack": "rm -rf *.tgz && npm run build",
+    "pack": "npm pack",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:kumarabhishek/react-mql.git"
+  },
+  "keywords": [
+    "react",
+    "matchmedia",
+    "mediaquery"
+  ],
+  "author": "Kumar Abhishek",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kumarabhishek/react-mql/issues"
+  },
+  "homepage": "https://github.com/kumarabhishek/react-mql/blob/master/README.md",
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.51",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "@babel/preset-react": "^7.0.0-beta.51",
+    "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "html-webpack-plugin": "^3.2.0",
+    "react-hot-loader": "^4.3.3",
+    "webpack": "^4.15.0",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1"
+  }
+}

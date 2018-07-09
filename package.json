@@ -1,7 +1,7 @@
 {
   "name": "@kaweb/react-mql",
-  "version": "1.0.1",
-  "description": "CSS Media Queries HOC for React",
+  "version": "1.0.2",
+  "description": "CSS Media Queries HOC and MediaContext for React",
   "main": "lib/react-mql.js",
   "scripts": {
     "start": "NODE_ENV=production webpack --config=webpack.config.js && npm run serve",

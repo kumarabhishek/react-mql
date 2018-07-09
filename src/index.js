@@ -30,10 +30,8 @@ class MqlProvider extends React.Component {
 	getHandler(name){
 		return {
 			handler: e => {
-				this.dev && console.log('MediaQueryListEvent Handler:', name, e);
-				this.setState({
-					[name]: e.currentTarget.matches
-				});
+				this.dev && console.log(`react-mql('${name}): matches for ${e.media} is ${e.matches}`);
+				this.setState({ [name]: e.matches });
 			},
 			name
 		};
@@ -41,19 +39,16 @@ class MqlProvider extends React.Component {
 
   /**
    * Subscribe for MediaQueryList
-   * @param {Object} list Config object of the form { media_query_name: media_query }
+   * @param {Object} mqlist Config object of the form { media_query_name: media_query }
    */
-	subscribe(list) {
-		Object.keys(list).map( m => {
-			const mqObj = window.matchMedia(list[m]);
+	subscribe(mqlist) {
+		Object.keys(mqlist).map( m => {
+			const mqObj = window.matchMedia(mqlist[m]);
 			const handlerObj = this.getHandler(m);
 			mqObj.addListener(handlerObj.handler);
-			this.dev && console.log('Subscribed MediaQueryListEvent:', m, handlerObj);
+			this.dev && console.log(`react-mql('${m}): subscribed to ${mqlist[m]}`);
 			this.state[m] = mqObj.matches; // Store current matches in state
-			this.mqlist[m] = {
-				handlerObj: handlerObj,
-				mqObj
-			};
+			this.mqlist[m] = { handlerObj: handlerObj, mqObj };
 		});
 	}
 
@@ -64,7 +59,8 @@ class MqlProvider extends React.Component {
 	unSubscribe(mqlist) {
 		Object.keys(mqlist).map( m => {
 			mqlist[m].mqObj.removeListener(mqlist[m].handlerObj.handler);
-			this.dev && console.log('Unsubscribed MediaQueryListEvent:', m, mqlist[m].handlerObj);
+			// this.dev && console.log('Unsubscribed MediaQueryListEvent:', m, mqlist[m].handlerObj);
+			this.dev && console.log(`react-mql('${m}): unsubscribed to ${mqlist[m].mqObj.media}`);
 		});
 	}
 

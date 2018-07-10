@@ -133,7 +133,7 @@ class App extends React.Component {
 };
 ```
 
-[Check out live demo](https://kumarabhishek.github.io/apps/react-mql).
+[Check out live demo](https://kumarabhishek.github.io/apps/react-mql/index.html).
 
 ## Example
 

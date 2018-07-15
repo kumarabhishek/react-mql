@@ -23,25 +23,11 @@ const libConfig = {
 					options: {
 						babelrc: false,
 						"presets": [
-							"@babel/preset-react",
-							["@babel/env", {
-								"targets": {
-									chrome: 68,
-									// "esmodules": true,
-									"browsers": [
-										//'cover 99.5%'
-										// 'last 1 versions',
-										//'> 5%'
-									]
-								},
-								"modules": false,
-								// "useBuiltIns": 'entry',
-								ignoreBrowserslistConfig: true
-							}]
+							"react", "env"
 						],
 						"plugins": [
-							"@babel/syntax-dynamic-import",
-							"react-hot-loader/babel"
+							"transform-react-jsx",
+							"transform-object-rest-spread"
 						]
 					}					
 				}
@@ -72,14 +58,12 @@ const exampleConfig = {
 					options: {
 						babelrc: false,
 						"presets": [
-							"@babel/preset-react",
-							["@babel/env", {
-								"modules": false
-							}]
+							"react", "env"
 						],
 						"plugins": [
-							"@babel/syntax-dynamic-import",
-							"react-hot-loader/babel"
+							"transform-react-jsx",
+							"transform-object-rest-spread",
+							"syntax-dynamic-import",
 						]
 					}					
 				}

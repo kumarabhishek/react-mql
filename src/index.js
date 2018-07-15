@@ -17,10 +17,10 @@ class MqlProvider extends React.Component {
    */
   constructor(props){
 		super(props);
-		this.dev = this.props.dev;
+		this.dev = !!this.props.dev;
 		this.state = {};
 		this.mqlist = {};
-		this.subscribe(props.list);
+		props.list && typeof(props.list) === 'object' && this.subscribe(props.list);
   }
 
   /**
@@ -59,12 +59,11 @@ class MqlProvider extends React.Component {
 	unSubscribe(mqlist) {
 		Object.keys(mqlist).map( m => {
 			mqlist[m].mqObj.removeListener(mqlist[m].handlerObj.handler);
-			// this.dev && console.log('Unsubscribed MediaQueryListEvent:', m, mqlist[m].handlerObj);
 			this.dev && console.log(`react-mql('${m}): unsubscribed to ${mqlist[m].mqObj.media}`);
 		});
 	}
 
-  componentWillUnmount(){
+  componentWillUnmount () {
 		this.unSubscribe(this.mqlist);
 	}
 	
@@ -77,7 +76,7 @@ class MqlProvider extends React.Component {
 	}
 
   render() {
-		if(this.props.enabled){
+		if(this.props.enabled && Object.keys(this.mqlist).length !== 0){
 			return <Context.Provider value={this.state}>
 				{this.props.children}
 			</Context.Provider>;
@@ -86,12 +85,17 @@ class MqlProvider extends React.Component {
 }
 
 const Media = (props) => {
-  const {children, enabled, ...other} = props;
-  return <MqlProvider {...other} enabled={enabled}>
-    <MediaContext>
-      {v => children(v)}
-    </MediaContext>
-  </MqlProvider>;
+	let {children, enabled, ...other} = props;
+	enabled = enabled === undefined || enabled;
+	if (children && typeof(children) === 'function') {
+		return <MqlProvider {...other} enabled={enabled}>
+			<MediaContext>
+				{v => children(v)}
+			</MediaContext>
+		</MqlProvider>;
+	} else {
+		return null;
+	}
 };
 
 export default Media;

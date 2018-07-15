@@ -15,7 +15,9 @@
     "prepack": "rm -rf *.tgz && npm run build",
     "pack": "npm pack",
     "test": "jest --coverage",
-    "release": "npm run build && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags && npm publish"
+    "preversion": "npm test",
+    "version": "npm run build && git add .",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",

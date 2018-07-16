@@ -10,26 +10,28 @@ const Context = React.createContext();
 export const MediaContext = Context.Consumer;
 
 class MqlProvider extends React.Component {
-  
-  /**
+
+	/**
    * Constructor for MqlProvider
    * @param {Object} props
    */
-  constructor(props){
+	constructor (props) {
 		super(props);
 		this.dev = !!this.props.dev;
 		this.state = {};
-		this.mqlist = {};
-		props.list && typeof(props.list) === 'object' && this.subscribe(props.list);
-  }
+		this.handlerMap = {};
+		this.subscribe = this.subscribe.bind(this);
+		this.unSubscribe = this.unSubscribe.bind(this);
+	}
 
-  /**
-   * Get a media_query_list handler closure of given `name` 
-   * @param {string} name 
+	/**
+   * Get a media_query_list handler closure of given `name`
+   * @param {string} name
    */
-	getHandler(name){
+	getHandler (name) {
 		return {
 			handler: e => {
+				// eslint-disable-next-line no-console
 				this.dev && console.log(`react-mql('${name}): matches for ${e.media} is ${e.matches}`);
 				this.setState({ [name]: e.matches });
 			},
@@ -37,60 +39,60 @@ class MqlProvider extends React.Component {
 		};
 	}
 
-  /**
+	/**
    * Subscribe for MediaQueryList
-   * @param {Object} mqlist Config object of the form { media_query_name: media_query }
    */
-	subscribe(mqlist) {
-		Object.keys(mqlist).map( m => {
-			const mqObj = window.matchMedia(mqlist[m]);
+	subscribe () {
+		let currentMatches = {};
+		Object.keys(this.props.list).map(m => {
+			const mqObj = window.matchMedia(this.props.list[m]);
 			const handlerObj = this.getHandler(m);
 			mqObj.addListener(handlerObj.handler);
-			this.dev && console.log(`react-mql('${m}): subscribed to ${mqlist[m]}`);
-			this.state[m] = mqObj.matches; // Store current matches in state
-			this.mqlist[m] = { handlerObj: handlerObj, mqObj };
+			// eslint-disable-next-line no-console
+			this.dev && console.log(`react-mql('${m}): subscribed to ${this.props.list[m]}`);
+			currentMatches[m] = mqObj.matches;
+			this.handlerMap[m] = { handlerObj: handlerObj, mqObj };
 		});
+		this.setState(currentMatches);
 	}
 
-  /**
+	/**
    * Un-subscribe for MediaQueryList
-   * @param {Object} mqlist Config object of the form { media_query_name: { handlerObj: media_query_event_handler, mqObj: media_query_object } }
    */
-	unSubscribe(mqlist) {
-		Object.keys(mqlist).map( m => {
-			mqlist[m].mqObj.removeListener(mqlist[m].handlerObj.handler);
-			this.dev && console.log(`react-mql('${m}): unsubscribed to ${mqlist[m].mqObj.media}`);
+	unSubscribe () {
+		Object.keys(this.handlerMap).map(m => {
+			this.handlerMap[m].mqObj.removeListener(this.handlerMap[m].handlerObj.handler);
+			// eslint-disable-next-line no-console
+			this.dev && console.log(`react-mql('${m}): unsubscribed to ${this.handlerMap[m].mqObj.media}`);
 		});
+		this.handlerMap = {};
 	}
 
-  componentWillUnmount () {
-		this.unSubscribe(this.mqlist);
-	}
-	
-	componentWillReceiveProps(nextProps) {
-		if(nextProps.enabled){
-			this.subscribe(nextProps.list);
-		} else {
-			this.unSubscribe(this.mqlist);
-		}
+	componentDidMount () {
+		this.props.list && typeof (this.props.list) === 'object' && this.subscribe();
 	}
 
-  render() {
-		if(this.props.enabled && Object.keys(this.mqlist).length !== 0){
+	componentWillUnmount () {
+		this.unSubscribe();
+	}
+
+	render () {
+		if (Object.keys(this.state).length !== 0) {
 			return <Context.Provider value={this.state}>
 				{this.props.children}
 			</Context.Provider>;
-		} else return this.props.children;
-  }
+		} else {
+			return this.props.children;
+		}
+	}
 }
 
 const Media = (props) => {
-	let {children, enabled, ...other} = props;
-	enabled = enabled === undefined || enabled;
-	if (children && typeof(children) === 'function') {
-		return <MqlProvider {...other} enabled={enabled}>
+	let { children, ...other } = props;
+	if (children && typeof (children) === 'function') {
+		return <MqlProvider {...other}>
 			<MediaContext>
-				{v => children(v)}
+				{ v => v && children(v) }
 			</MediaContext>
 		</MqlProvider>;
 	} else {

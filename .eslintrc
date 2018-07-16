@@ -1,0 +1,41 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+		"plugin:react/recommended",
+		"plugin:jest/recommended"
+	],
+	"parserOptions": {
+		"ecmaVersion": 6,
+		"sourceType": "module",
+		"ecmaFeatures": {
+				"jsx": true,
+				"experimentalObjectRestSpread": true
+		}
+	},
+  "plugins": [
+    "babel",
+		"react"
+  ],
+  "env": {
+		"browser" : true,
+		"es6": true
+  },
+  "rules": {
+		"react/prop-types"			: 0,
+    "key-spacing"          : 0,
+    "jsx-quotes"           : [2, "prefer-single"],
+    "max-len"              : [2, 120, 2],
+    "object-curly-spacing" : [2, "always"],
+    "semi"                 : 0,
+    "padded-blocks"        : 0,
+    "trailing-spaces"      : [0, { "skipBlankLines": true }],
+    "indent"               : ["error", "tab"],
+		"react/jsx-indent"     : [2, "tab"],
+		"spaced-comment"				: 0,
+    "no-extra-boolean-cast": "off",
+    "no-tabs"              : 0,
+    "no-mixed-spaces-and-tabs": [1],
+    "no-return-assign"     : "off"
+  }
+}

@@ -1,6 +1,6 @@
 # Contributing Guidelines
 
-We are pleased to receive your support and contribution. By contributing to `react-mql`, you agree to abide by the [code of conduct](CODE_OF_CONDUCT.md).
+We are pleased to receive your support and contribution. By contributing to `react-mql`, you agree to abide by the [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## General
 

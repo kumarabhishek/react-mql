@@ -1,6 +1,6 @@
 # react-mql
 
-[![CircleCI](https://circleci.com/gh/kumarabhishek/react-mql/tree/master.svg?style=svg)](https://circleci.com/gh/kumarabhishek/react-mql/tree/master)
+[![CircleCI](https://circleci.com/gh/kumarabhishek/react-mql/tree/master.svg?style=svg)](https://circleci.com/gh/kumarabhishek/react-mql/tree/master) [![npm (scoped)](https://img.shields.io/npm/v/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/kumarabhishek/react-mql/blob/master/LICENSE)
 
 `CSS Media Queries HOC and MediaContext for React`
 
@@ -42,7 +42,7 @@ Similary es6+ version can be imported as below:
 import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
 ```
 
-It's noticeable that if you are targeting modern browser natively supporting es6+, then `@kaweb/react-mql/lib/es` will just around 2 Kb (non-gzipped) and around 1 Kb (gzipped). While es5 version of the same module is around 10 Kb (non-gzipped) and around 4 Kb (gzipped). In short around 80% benefit of size is available if you choose es6+ version.
+NOTE: It's noticeable that if you are targeting modern browser natively supporting es6+, then `@kaweb/react-mql/lib/es` will just around 2 Kb (non-gzipped) and around 1 Kb (gzipped). While es5 version of the same module is around 10 Kb (non-gzipped) and around 4 Kb (gzipped). In short around 80% benefit of size is available if you choose es6+ version.
 
 * **Media component**
 
@@ -52,6 +52,7 @@ Name | type | Description         | Example
 -----|------|---------------------|---------
 list |Object| Object with key as media-query name and value as _CSS media queries_. | ```{landscape: '(orientation: landscape)'}```, where `landscape` is media-query name and `'(orientation: landscape)'` is media-query value. When there is a match for this media-query, matches object provided to functional component will be ```{landscape: true/false}```
 dev | Boolean | Enable/disable console log when media-queries matches. | <Media dev>
+
 ```js
 import React from 'react';
 import Media from '@kaweb/react-mql/lib/es';

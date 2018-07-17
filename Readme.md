@@ -176,4 +176,4 @@ npm test
 
 Your contributions are welcome!
 
-Refer [contributing guide](./CONTRIBUTING.md) for more details.
+Refer [contributing guide](https://github.com/kumarabhishek/react-mql/blob/master/CONTRIBUTING.md) for more details.

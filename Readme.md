@@ -1,6 +1,8 @@
 # react-mql
 
-[![CircleCI](https://circleci.com/gh/kumarabhishek/react-mql/tree/master.svg?style=svg)](https://circleci.com/gh/kumarabhishek/react-mql/tree/master) [![npm (scoped)](https://img.shields.io/npm/v/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/kumarabhishek/react-mql/blob/master/LICENSE)
+[![CircleCI](https://circleci.com/gh/kumarabhishek/react-mql/tree/master.svg?style=svg)](https://circleci.com/gh/kumarabhishek/react-mql/tree/master) 
+[![npm](https://img.shields.io/npm/v/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) 
+[![npm](https://img.shields.io/npm/dt/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/kumarabhishek/react-mql/blob/master/LICENSE)
 
 `CSS Media Queries HOC and MediaContext for React`
 
@@ -171,7 +173,6 @@ Jest is used for unit testing with coverage ans eslint is used as linter. To run
 ```
 npm test
 ```
-
 
 ## Contributing
 

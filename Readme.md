@@ -6,7 +6,7 @@
 
 `CSS Media Queries HOC and MediaContext for React`
 
-![Demo](https://github.com/kumarabhishek/react-mql/blob/master/example/demo.gif)
+![Demo](https://raw.githubusercontent.com/kumarabhishek/react-mql/master/example/demo.gif)
 
 ## Introduction
 

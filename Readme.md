@@ -16,13 +16,15 @@ Use `<Media>` as the top most component which accept list of media queries as pr
 
 `MediaContext` is a helper component which can be used anywhere and any number of times in the component sub-tree inside `Media`. It is more helpfull when we do not want to keep passing media query matches as `props` down the component sub-tree. Anywhere in the sub-tree when we need to access `matches` we can get using `MediaContext`.
 
+## Demo
+
+[https://kumarabhishek.github.io/apps/react-mql/index.html](https://kumarabhishek.github.io/apps/react-mql/index.html).
+
 ## Features
 
 * It has **ZERO** dependencies and is **< 1KB** (gzipped) in size.
 * It is purely based on browser native HTML5 feature _[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList)_.
 * Uses latest React 16.x _[Context](https://reactjs.org/docs/context.html)_ API
-
-
 
 ## Install
 
@@ -52,8 +54,8 @@ NOTE: It's noticeable that if you are targeting modern browser natively supporti
 
 Name | type | Description         | Example
 -----|------|---------------------|---------
-list |Object| Object with key as media-query name and value as _CSS media queries_. | ```{landscape: '(orientation: landscape)'}```, where `landscape` is media-query name and `'(orientation: landscape)'` is media-query value. When there is a match for this media-query, matches object provided to functional component will be ```{landscape: true/false}```
-dev | Boolean | Enable/disable console log when media-queries matches. | <Media dev>
+list |Object| Object with key as media-query name and value as _CSS media queries_. If `list` is not passed, `<Media>` simply render its children. | ```{landscape: '(orientation: landscape)'}```, where `landscape` and `'(orientation: landscape)'` are respectively name and value of media-query. When there is a match for this media-query, matches object provided to functional component will be ```{landscape: true/false}```
+dev | Boolean | Enable/disable console log when media-queries matches. Default is `false` | `<Media dev>`
 
 ```js
 import React from 'react';
@@ -139,8 +141,6 @@ class App extends React.Component {
   }
 };
 ```
-
-[Check out live demo](https://kumarabhishek.github.io/apps/react-mql/index.html).
 
 ## Example
 

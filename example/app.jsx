@@ -13,7 +13,7 @@ export default class App extends React.Component {
 		}
 		
 		this.list = {
-			bigScreen: '(min-width: 100px) and (max-width: 1080px)',
+			bigScreen: '(min-width: 1080px) and (max-width: 1920px)',
 			landscape: '(orientation: landscape)'
 		};
 	}
@@ -32,4 +32,4 @@ export default class App extends React.Component {
 			</Media>
 		</React.Fragment>;
 	}
-};
+}

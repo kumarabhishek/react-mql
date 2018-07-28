@@ -7,4 +7,4 @@ export default class CompMatchesAsProps extends React.Component {
 			<h4>CSS Media Query Matches:<br/>{JSON.stringify(this.props, 4)}</h4>
 		</div>;
 	}
-};
+}

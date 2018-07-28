@@ -8,10 +8,12 @@ module.exports = {
 		path: path.resolve(__dirname, 'lib'),
 		filename: 'react-mql.js',
 		library: 'ReactMql',
-		libraryTarget: 'umd'
+		libraryTarget: 'umd',
+		umdNamedDefine: true
 	},
 	externals : {
-		react: 'react'
+		react: 'react',
+		'react-dom': 'react-dom'
 	},
 	target: 'web',
 	module: {

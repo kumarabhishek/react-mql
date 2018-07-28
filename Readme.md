@@ -12,13 +12,17 @@
 
 A React based component to match media as per CSS Media Queries using browser-native window.matchMedia(). `react-mql` provide two components namely `Media` and `MediaContext`. Both these components can have just one single functional component as only child.
 
-Use `<Media>` as the top most component which accept list of media queries as prop and it passes on the matches to its immediate single functional component. In case we need to have statefull component as child of `<Media>` then it need to be enclosed inside functional component wrapper.
+Use `Media` as the top most component which accept list of media queries as prop and it passes on the matches to its immediate single functional component. In case we need to have statefull component as child of `Media` then it need to be enclosed inside functional component wrapper.
 
 `MediaContext` is a helper component which can be used anywhere and any number of times in the component sub-tree inside `Media`. It is more helpfull when we do not want to keep passing media query matches as `props` down the component sub-tree. Anywhere in the sub-tree when we need to access `matches` we can get using `MediaContext`.
 
 ## Demo
 
-[https://kumarabhishek.github.io/apps/react-mql/index.html](https://kumarabhishek.github.io/apps/react-mql/index.html).
+[https://codesandbox.io/s/vyklk855w7](https://codesandbox.io/s/vyklk855w7)
+
+[![Edit vyklk855w7](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vyklk855w7?expanddevtools=1&hidenavigation=1&view=preview)
+
+
 
 ## Features
 
@@ -46,8 +50,6 @@ Similary es6+ version can be imported as below:
 import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
 ```
 
-NOTE: It's noticeable that if you are targeting modern browser natively supporting es6+, then `@kaweb/react-mql/lib/es` will just around 2 Kb (non-gzipped) and around 1 Kb (gzipped). While es5 version of the same module is around 10 Kb (non-gzipped) and around 4 Kb (gzipped). In short around 80% benefit of size is available if you choose es6+ version.
-
 * **Media component**
 
 `Media` accept following props:
@@ -56,6 +58,7 @@ Name | type | Description         | Example
 -----|------|---------------------|---------
 list |Object| Object with key as media-query name and value as _CSS media queries_. If `list` is not passed, `<Media>` simply render its children. | ```{landscape: '(orientation: landscape)'}```, where `landscape` and `'(orientation: landscape)'` are respectively name and value of media-query. When there is a match for this media-query, matches object provided to functional component will be ```{landscape: true/false}```
 dev | Boolean | Enable/disable console log when media-queries matches. Default is `false` | `<Media dev>`
+---------------------------------------------
 
 ```js
 import React from 'react';
@@ -77,69 +80,85 @@ class CompMatchesAsProps extends React.Component {
 	}
 }
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    
-    this.list = {
-      bigScreen: '(min-width: 100px) and (max-width: 1080px)',
-      landscape: '(orientation: landscape)'
-    };
-  }
-
-  render(){
-    return <React.Fragment>
-      <h2>Resize browser window / rotate mobile and observe changes in values as below:</h2>
-      Toggle listening for MediaQueryList</button>
-      <Media list={this.list} dev>
-        {CompStateless}
-      </Media>
-      <Media list={this.list} dev>
-        { v => <CompMatchesAsProps {...v}/>}
-      </Media>
-    </React.Fragment>;
-  }
+const list = {
+  bigScreen: "(min-width: 1080px) and (max-width: 1920px)",
+  landscape: "(orientation: landscape)"
 };
+export default class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <h2>
+          Resize browser / rotate your mobile and observe changes in values as
+          below:
+        </h2>
+        <Media list={list} dev>
+          {CompStateless}
+        </Media>
+        <Media list={list} dev>
+          {v => <CompMatchesAsProps {...v} />}
+        </Media>
+      </React.Fragment>
+    );
+  }
+}
+
+render(<App />, document.getElementById("root"));
 ```
 
 * **MediaContext component**
+
+We use `MediaContext` to access mediaquery `matches` anywhere inside the component hierarchy of `Media` as shown below:
 
 ```js
 import React from 'react';
 import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
 
 class CompMatchesUsingMediaContext extends React.Component {
-	render() {
-		return <MediaContext>
-			{ v => (
-				<div style={{ background: v.bigScreen ? '#aaccee' : '#66ccaa', padding: '0.5rem' }}>
-					<h3>Component with matches using MediaContext</h3>
-					<h4>CSS Media Query Matches:<br/>{JSON.stringify(v, 4)}</h4>
-				</div>
-			)}
-		</MediaContext>;
-	}
+  render() {
+    return (
+      <MediaContext>
+        {v => (
+          <div
+            style={{
+              background: v.bigScreen ? "#aaccee" : "#66ccaa",
+              padding: "0.5rem"
+            }}
+          >
+            <h3>Component with matches using MediaContext</h3>
+            <h4>
+              CSS Media Query Matches:<br />
+              {JSON.stringify(v, 4)}
+            </h4>
+          </div>
+        )}
+      </MediaContext>
+    );
+  }
 }
 
-class App extends React.Component {
-  constructor(props){
-    super(props);
-    
-    this.list = {
-      bigScreen: '(min-width: 100px) and (max-width: 1080px)',
-      landscape: '(orientation: landscape)'
-    };
-  }
-
-  render(){
-    return <React.Fragment>
-      <h2>Resize browser / rotate mobile and observe changes in values as below:</h2>
-      <Media list={this.list} dev>
-        { () => <CompMatchesUsingMediaContext />}
-      </Media>
-    </React.Fragment>;
-  }
+const list = {
+  bigScreen: "(min-width: 1080px) and (max-width: 1920px)",
+  landscape: "(orientation: landscape)"
 };
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <h2>
+          Resize browser / rotate your mobile and observe changes in values as
+          below:
+        </h2>
+        <Media list={list} dev>
+          {() => <CompMatchesUsingMediaContext />}
+        </Media>
+      </React.Fragment>
+    );
+  }
+}
+
+render(<App />, document.getElementById("root"));
 ```
 
 ## Example

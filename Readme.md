@@ -18,7 +18,7 @@ Use `Media` as the top most component which accept list of media queries as prop
 
 ## Demo
 
-[https://codesandbox.io/s/vyklk855w7](https://codesandbox.io/s/vyklk855w7)
+[![Edit on codepen](https://www.vectorlogo.zone/logos/codepen/codepen-ar21.svg)](https://codepen.io/webprofessional/pen/ZjJgKL?editors=0010)
 
 [![Edit vyklk855w7](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/vyklk855w7?expanddevtools=1&hidenavigation=1&view=preview)
 
@@ -32,8 +32,24 @@ Use `Media` as the top most component which accept list of media queries as prop
 
 ## Install
 
+### NPM
+
 ```
 npm i @kaweb/react-mql
+```
+
+### UMD
+
+Add script tag as below:
+```
+<script src="https://unpkg.com/@kaweb/react-mql@1.1.9/lib/react-mql.js"></script>
+```
+
+Then use following global object:
+
+```
+const Media = ReactMql.default;
+const MediaContext = ReactMql.MediaContext;
 ```
 
 ## Usage

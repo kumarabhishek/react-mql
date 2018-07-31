@@ -12,4 +12,4 @@ export default class CompMatchesUsingMediaContext extends React.Component {
 			)}
 		</MediaContext>;
 	}
-};
+}

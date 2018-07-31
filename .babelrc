@@ -1,12 +1,13 @@
 {
   "presets": [
     "react",
-    ["env", {
-      "production": {
-        "modules": false
-      }
-    } ]
+    ["env", {"modules": false} ]
   ],
+  "env": {
+    "test": {
+      "presets": ["react", "env"]
+    }
+  },
   "plugins": [
     "transform-react-jsx",
     "transform-object-rest-spread"

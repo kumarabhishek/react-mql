@@ -41,8 +41,9 @@ npm i @kaweb/react-mql
 ### UMD
 
 Add script tag as below:
+
 ```
-<script src="https://unpkg.com/@kaweb/react-mql@1.1.9/lib/react-mql.js"></script>
+<script src="https://unpkg.com/@kaweb/react-mql/lib/react-mql.js"></script>
 ```
 
 Then use following global object:

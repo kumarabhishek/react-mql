@@ -8,9 +8,6 @@ import CompMatchesAsProps from './comp_matches_as_props.jsx';
 export default class App extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {
-			enabled: true
-		}
 		
 		this.list = {
 			bigScreen: '(min-width: 1080px) and (max-width: 1920px)',
@@ -21,13 +18,13 @@ export default class App extends React.Component {
 	render(){
 		return <React.Fragment>
 			<h2>Resize browser / rotate your mobile and observe changes in values as below:</h2>
-			<Media enabled={this.state.enabled} list={this.list} dev>
+			<Media list={this.list}>
 				{CompStateless}
 			</Media>
-			<Media enabled={this.state.enabled} list={this.list} dev>
+			<Media list={this.list}>
 				{ () => <CompMatchesUsingMediaContext />}
 			</Media>
-			<Media enabled={this.state.enabled} list={this.list} dev>
+			<Media list={this.list} >
 				{ v => <CompMatchesAsProps {...v}/>}
 			</Media>
 		</React.Fragment>;

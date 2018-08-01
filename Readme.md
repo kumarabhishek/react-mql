@@ -34,7 +34,7 @@ Use `Media` as the top most component which accept list of media queries as prop
 
 ### NPM
 
-```
+```sh
 npm i @kaweb/react-mql
 ```
 
@@ -42,13 +42,13 @@ npm i @kaweb/react-mql
 
 Add script tag as below:
 
-```
+```html
 <script src="https://unpkg.com/@kaweb/react-mql/lib/react-mql.js"></script>
 ```
 
 Then use following global object:
 
-```
+```js
 const Media = ReactMql.default;
 const MediaContext = ReactMql.MediaContext;
 ```
@@ -184,19 +184,19 @@ To try out example provided as part of react-mql follow following steps:
 
 ### Clone repo
 
-```
+```sh
 git clone https://github.com/kumarabhishek/react-mql.git
 ```
 
 ### Install npm modules
 
-```
+```sh
 npm i
 ```
 
 ### Run example
 
-```
+```sh
 npm start
 ```
 
@@ -206,7 +206,7 @@ Now open [http://localhost:3000](http://localhost:3000).
 
 Jest is used for unit testing with coverage ans eslint is used as linter. To run the test suite, first install the dependencies, then run `npm test` inside root folder:
 
-```
+```sh
 npm test
 ```
 

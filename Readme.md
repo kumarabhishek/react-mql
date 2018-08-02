@@ -72,7 +72,7 @@ list |Object| Object with key as media-query name and value as _CSS media querie
 
 ```js
 import React from 'react';
-import Media from '@kaweb/react-mql/lib/es';
+import Media from '@kaweb/react-mql';
 
 const CompStateless = (props) => {
   return <div style={{background: props.bigScreen ? '#edeeed' : '#66ee66', padding: '1rem'}}>
@@ -122,7 +122,7 @@ We use `MediaContext` to access mediaquery `matches` anywhere inside the compone
 
 ```js
 import React from 'react';
-import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
+import Media, {MediaContext} from '@kaweb/react-mql';
 
 class CompMatchesUsingMediaContext extends React.Component {
   render() {

@@ -1,9 +1,16 @@
+import jsdom from 'jsdom';
 import matchMediaPolyfill from 'mq-polyfill';
-
+const { JSDOM } = jsdom;
+const { document } = (new JSDOM('<!doctype html><html><body></body></html>')).window;
+global.document = document;
+global.window = document.defaultView;
+global.navigator = {
+	userAgent: 'node.js'
+};
 /**
  * Define the window.matchMedia
  */
-matchMediaPolyfill(window);
+matchMediaPolyfill(global.window);
 
 /**
  * For dispatching resize event

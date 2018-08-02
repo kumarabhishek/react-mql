@@ -11,59 +11,35 @@ export const MediaContext = Context.Consumer;
 
 class MqlProvider extends React.Component {
 
-	/**
-   * Constructor for MqlProvider
-   * @param {Object} props
-   */
 	constructor (props) {
 		super(props);
-		this.dev = !!this.props.dev;
 		this.state = {};
 		this.handlerMap = {};
 		this.subscribe = this.subscribe.bind(this);
 		this.unSubscribe = this.unSubscribe.bind(this);
 	}
 
-	/**
-   * Get a media_query_list handler closure of given `name`
-   * @param {string} name
-   */
 	getHandler (name) {
 		return {
-			handler: e => {
-				// eslint-disable-next-line no-console
-				this.dev && console.log(`react-mql('${name}): matches for ${e.media} is ${e.matches}`);
-				this.setState({ [name]: e.matches });
-			},
-			name
+			handler: e => { this.setState({ [name]: e.matches }); }, name
 		};
 	}
 
-	/**
-   * Subscribe for MediaQueryList
-   */
 	subscribe () {
 		let currentMatches = {};
 		Object.keys(this.props.list).map(m => {
 			const mqObj = window.matchMedia(this.props.list[m]);
 			const handlerObj = this.getHandler(m);
 			mqObj.addListener(handlerObj.handler);
-			// eslint-disable-next-line no-console
-			this.dev && console.log(`react-mql('${m}): subscribed to ${this.props.list[m]}`);
 			currentMatches[m] = mqObj.matches;
 			this.handlerMap[m] = { handlerObj: handlerObj, mqObj };
 		});
 		this.setState(currentMatches);
 	}
 
-	/**
-   * Un-subscribe for MediaQueryList
-   */
 	unSubscribe () {
 		Object.keys(this.handlerMap).map(m => {
 			this.handlerMap[m].mqObj.removeListener(this.handlerMap[m].handlerObj.handler);
-			// eslint-disable-next-line no-console
-			this.dev && console.log(`react-mql('${m}): unsubscribed to ${this.handlerMap[m].mqObj.media}`);
 		});
 		this.handlerMap = {};
 	}
@@ -72,9 +48,7 @@ class MqlProvider extends React.Component {
 		this.props.list && typeof (this.props.list) === 'object' && this.subscribe();
 	}
 
-	componentWillUnmount () {
-		this.unSubscribe();
-	}
+	componentWillUnmount () { this.unSubscribe(); }
 
 	render () {
 		if (Object.keys(this.state).length !== 0) {

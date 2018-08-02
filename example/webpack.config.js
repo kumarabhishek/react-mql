@@ -23,8 +23,7 @@ module.exports = {
 						],
 						"plugins": [
 							"transform-react-jsx",
-							"transform-object-rest-spread",
-							"syntax-dynamic-import",
+							"transform-object-rest-spread"
 						]
 					}					
 				}

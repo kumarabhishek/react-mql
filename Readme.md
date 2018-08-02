@@ -55,16 +55,10 @@ const MediaContext = ReactMql.MediaContext;
 
 ## Usage
 
-`react-mql` provide both es5 and es6+ version so that you can choose based on your requirement. Default package is es5 version which can be imported in your application as below:
+`react-mql` can be imported in your application as below:
 
 ```js
 import Media, {MediaContext} from '@kaweb/react-mql';
-```
-
-Similary es6+ version can be imported as below:
-
-```js
-import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
 ```
 
 * **Media component**
@@ -74,7 +68,6 @@ import Media, {MediaContext} from '@kaweb/react-mql/lib/es';
 Name | type | Description         | Example
 -----|------|---------------------|---------
 list |Object| Object with key as media-query name and value as _CSS media queries_. If `list` is not passed, `<Media>` simply render its children. | ```{landscape: '(orientation: landscape)'}```, where `landscape` and `'(orientation: landscape)'` are respectively name and value of media-query. When there is a match for this media-query, matches object provided to functional component will be ```{landscape: true/false}```
-dev | Boolean | Enable/disable console log when media-queries matches. Default is `false` | `<Media dev>`
 ---------------------------------------------
 
 ```js
@@ -109,10 +102,10 @@ export default class App extends React.Component {
           Resize browser / rotate your mobile and observe changes in values as
           below:
         </h2>
-        <Media list={list} dev>
+        <Media list={list}>
           {CompStateless}
         </Media>
-        <Media list={list} dev>
+        <Media list={list}>
           {v => <CompMatchesAsProps {...v} />}
         </Media>
       </React.Fragment>
@@ -167,7 +160,7 @@ export default class App extends React.Component {
           Resize browser / rotate your mobile and observe changes in values as
           below:
         </h2>
-        <Media list={list} dev>
+        <Media list={list}>
           {() => <CompMatchesUsingMediaContext />}
         </Media>
       </React.Fragment>

@@ -4,7 +4,7 @@
 [![npm](https://img.shields.io/npm/v/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) 
 [![npm](https://img.shields.io/npm/dt/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/kumarabhishek/react-mql/blob/master/LICENSE)
 
-`CSS Media Queries HOC and MediaContext for React`
+**`CSS Media Queries HOC and MediaContext for React`**
 
 ![Demo](https://raw.githubusercontent.com/kumarabhishek/react-mql/master/example/demo.gif)
 
@@ -17,6 +17,9 @@ Use `Media` as the top most component which accept list of media queries as prop
 `MediaContext` is a helper component which can be used anywhere and any number of times in the component sub-tree inside `Media`. It is more helpfull when we do not want to keep passing media query matches as `props` down the component sub-tree. Anywhere in the sub-tree when we need to access `matches` we can get using `MediaContext`.
 
 ## Demo
+
+**[https://kumarabhishek.github.io/react-mql/](https://kumarabhishek.github.io/react-mql/)**
+
 
 [![Edit on codepen](https://www.vectorlogo.zone/logos/codepen/codepen-ar21.svg)](https://codepen.io/webprofessional/pen/ZjJgKL?editors=0010)
 

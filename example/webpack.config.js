@@ -6,7 +6,7 @@ module.exports = {
 	context: path.resolve(__dirname, './'),
 	entry: './index.jsx',
 	output: {
-		path: path.resolve(__dirname, 'public'),
+		path: path.resolve(__dirname, '../docs'),
 		filename: 'bundle.js'
 	},
 	module: {

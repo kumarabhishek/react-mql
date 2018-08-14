@@ -5,6 +5,7 @@
   "main": "lib/react-mql.js",
   "scripts": {
     "start": "NODE_ENV=production webpack-dev-server --config=example/webpack.config.js -p",
+    "prebuild:example": "rm -rf docs",
     "build:example": "NODE_ENV=production webpack --config=example/webpack.config.js -p",
     "prebuild:lib": "rm -rf lib",
     "build:lib": "NODE_ENV=production webpack -p --config=webpack.config.js",
@@ -24,7 +25,8 @@
   "keywords": [
     "react",
     "matchmedia",
-    "mediaquery"
+    "mediaquery",
+    "responsive"
   ],
   "author": "Kumar Abhishek",
   "license": "MIT",

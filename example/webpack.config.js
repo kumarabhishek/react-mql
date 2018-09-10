@@ -19,11 +19,7 @@ module.exports = {
 					options: {
 						babelrc: false,
 						"presets": [
-							"react", "env"
-						],
-						"plugins": [
-							"transform-react-jsx",
-							"transform-object-rest-spread"
+							"@babel/preset-react", "@babel/preset-env"
 						]
 					}					
 				}

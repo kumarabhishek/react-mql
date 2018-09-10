@@ -48,14 +48,14 @@
   },
   "homepage": "https://github.com/kumarabhishek/react-mql/blob/master/README.md",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^8.2.6",
-    "babel-loader": "^7.1.5",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "eslint": "^5.4.0",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.2",
+    "eslint": "^5.5.0",
     "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-jest": "^21.21.0",
     "eslint-plugin-react": "^7.11.1",
@@ -63,16 +63,17 @@
     "jest": "^23.5.0",
     "jsdom": "^12.0.0",
     "mq-polyfill": "^1.1.8",
-    "react": "^16.4.2",
-    "react-dom": "^16.4.2",
+    "react": "^16.5.0",
+    "react-dom": "^16.5.0",
     "react-hot-loader": "^4.3.4",
-    "react-test-renderer": "^16.4.2",
-    "webpack": "^4.16.5",
+    "react-test-renderer": "^16.5.0",
+    "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
+    "webpack-dev-server": "^3.1.8"
   },
   "peerDependencies": {
-    "react": ">= 16.4.2",
-    "react-dom": ">= 16.4.2"
-  }
+    "react": ">= 16.5.0",
+    "react-dom": ">= 16.5.0"
+  },
+  "dependencies": {}
 }

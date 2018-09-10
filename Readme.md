@@ -29,7 +29,7 @@ Use `Media` as the top most component which accept list of media queries as prop
 
 ## Features
 
-* It has **ZERO** dependencies and is **< 1KB** (gzipped) in size.
+* It has **ZERO** dependencies and is **~ 1KB** (gzipped) in size.
 * It is purely based on browser native HTML5 feature _[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList)_.
 * Uses latest React 16.x _[Context](https://reactjs.org/docs/context.html)_ API
 

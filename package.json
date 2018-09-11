@@ -1,6 +1,6 @@
 {
   "name": "@kaweb/react-mql",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CSS Media Queries HOC and MediaContext for React",
   "main": "lib/react-mql.js",
   "scripts": {

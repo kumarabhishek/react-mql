@@ -1,6 +1,6 @@
 {
   "name": "@kaweb/react-mql",
-  "version": "1.2.7",
+  "version": "1.2.8",
   "description": "CSS Media Queries HOC and MediaContext for React",
   "main": "lib/react-mql.js",
   "scripts": {
@@ -37,7 +37,9 @@
     "testEnvironment": "node",
     "automock": false,
     "setupTestFrameworkScriptFile": "<rootDir>/src/__test__/setup.js",
-    "coveragePathIgnorePatterns": ["<rootDir>/src/__test__/setup.js"],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/src/__test__/setup.js"
+    ],
     "transform": {
       "^.+\\.(js|jsx)$": "babel-jest"
     },

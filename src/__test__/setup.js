@@ -25,4 +25,31 @@ window.resizeTo = function resizeTo(width, height) {
 	}).dispatchEvent(new this.Event('resize'));
 };
 
+(function() {
+	function requestAnimationFrame(callback) {
+		var currentTime = now();
+		var delay = Math.max(0, 16 - (currentTime - lastTime));
 
+		lastTime = currentTime;
+
+		return setTimeout(function () {
+			lastTime = now();
+
+			callback(lastTime - startTime);
+		}, delay);
+	}
+
+	function cancelAnimationFrame(id) {
+		clearTimeout(id);
+	}
+
+
+	var now = Date.now || function () {
+		return new Date().getTime();
+	};
+	var startTime = now();
+	var lastTime = startTime;
+
+	global.requestAnimationFrame = requestAnimationFrame;
+	global.cancelAnimationFrame = cancelAnimationFrame;
+})();

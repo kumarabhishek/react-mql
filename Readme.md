@@ -1,6 +1,7 @@
 # react-mql
 
 [![CircleCI](https://circleci.com/gh/kumarabhishek/react-mql/tree/master.svg?style=svg)](https://circleci.com/gh/kumarabhishek/react-mql/tree/master) 
+[![Known Vulnerabilities](https://snyk.io/test/npm/@kaweb/react-mql/badge.svg)](https://snyk.io/test/npm/@kaweb/react-mql)
 [![npm](https://img.shields.io/npm/v/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) 
 [![npm](https://img.shields.io/npm/dt/@kaweb/react-mql.svg)](https://www.npmjs.com/package/@kaweb/react-mql) [![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://github.com/kumarabhishek/react-mql/blob/master/LICENSE)
 
@@ -10,7 +11,7 @@
 
 ## Introduction
 
-A React based component to match media as per CSS Media Queries using browser-native window.matchMedia(). `react-mql` provide two components namely `Media` and `MediaContext`. Both these components can have just one single functional component as only child.
+`react-mql` is a React based utility component to match media as per [CSS Media Queries](https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries) using browser-native [matchMedia](https://developer.mozilla.org/en-US/docs/Web/API/Window/matchMedia). `react-mql` provide two components namely `Media` and `MediaContext`, both of which can have just one functional component as child.
 
 Use `Media` as the top most component which accept list of media queries as prop and it passes on the matches to its immediate single functional component. In case we need to have statefull component as child of `Media` then it need to be enclosed inside functional component wrapper.
 
@@ -29,7 +30,7 @@ Use `Media` as the top most component which accept list of media queries as prop
 
 ## Features
 
-* It has **ZERO** dependencies and is **~ 1KB** (gzipped) in size.
+* It has **ZERO** dependencies and is **~ 75 LOC**.
 * It is purely based on browser native HTML5 feature _[MediaQueryList](https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList)_.
 * Uses latest React 16.x _[Context](https://reactjs.org/docs/context.html)_ API
 

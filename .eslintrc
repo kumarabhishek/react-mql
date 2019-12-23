@@ -38,5 +38,10 @@
     "no-tabs"              : 0,
     "no-mixed-spaces-and-tabs": [1],
     "no-return-assign"     : "off"
+  },
+  "settings": {
+    "react": {
+      "version": "16.12.0"
+    }
   }
 }
